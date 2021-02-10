@@ -95,9 +95,10 @@ button[disabled] {
 
 /*.passwordSettings box is hidden by default and will pop up when generate password button is clicked*/
 .passwordSettings {
-  /* display: none; */
+  display: none;
   position: fixed;
   z-index: 1;
+  padding: 300px;
   left: 0;
   top: 0;
   width: 100%;
@@ -108,8 +109,11 @@ button[disabled] {
 
 .setting {
   background-color: #fefefe;
-  padding: 5px;
+  text-align: center;
   width: 50%;
+  padding: 5px;
+  font-size: 16px;
+  color: #888;
 }
 
 #okayBtn{
