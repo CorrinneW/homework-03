@@ -12,6 +12,33 @@ const lowercaseEl = document.querySelector("#lowercase");
 const numberEl = document.querySelector("#number");
 const symbolEl = document.querySelector("#symbol");
 
+//generates a random character using corresponding character codes
+function getRandomLower() {
+  returnString.fromCharCode(
+    Math.floor(
+      Math.random() * 26) + 97
+    );
+}
+
+function getRandomUpper() {
+  returnString.fromCharCode(
+    Math.floor(
+      Math.random() * 26) + 65
+    );
+}
+
+function getRandomNumber() {
+  returnString.fromCharCode(
+    Math.floor(
+      Math.random() * 10) + 48
+    );
+}
+
+function getRandomSymbol() {
+  const symbols = "~`!@#$%^&*()_-+={[}]|\:;<,>";
+  return symbols[Math.floor(Math.random() * symbols.length)];
+}
+
 //object contains randomization functions
 const randomFunc = {
   lower: getRandomLower,
@@ -20,47 +47,17 @@ const randomFunc = {
   symbol: getRandomSymbol
 };
 
-//generates a random character using corresponding character codes
-function getRandomLower() {
-  returnString.fromCharCode(
-    Math.floor(
-      Math.random() * 26) + 97
-    )
-  )
-}
-
-function getRandomUpper() {
-  returnString.fromCharCode(
-    Math.floor(
-      Math.random() * 26) + 65
-    )
-  )
-}
-
-function getRandomNumber() {
-  returnString.fromCharCode(
-    Math.floor(
-      Math.random() * 10) + 48
-    )
-  )
-}
-
-function getRandomSymbol() {
-  const symbols = "~`!@#$%^&*()_-+={[}]|\:;<,>";
-  return symbols[Math.floor(Math.random() * symbols.length)];
-}
-
 //button functions: open & close popup
-generateBtn.onclick = function() {
-  passwordSettings.style.display = "block";
-}
+// generateBtn.onclick = function() {
+//   passwordSettings.style.display = "block";
+// }
 
-okayBtn.onclick = function() {
-  passwordSettings.style.display = "none";
-}
+// okayBtn.onclick = function() {
+//   passwordSettings.style.display = "none";
+// }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword, () => {
+generateBtn.addEventListener("click", writePassword, (length) => {
   // includes checked values in generated password and converts length entry from string to number
   const length = +lengthEl.value;
   const hasLower = lowercaseEl.checked;
@@ -75,7 +72,7 @@ generateBtn.addEventListener("click", writePassword, () => {
 
 function generatePassword(length, lower, upper, number, symbol) {
   //sets password to an empty string
-  let generatePassword = '';
+  let generatedPassword = '';
 
   //counts number of checked values
   const typesCount = lower + upper + number + symbol; 
@@ -93,6 +90,7 @@ function generatePassword(length, lower, upper, number, symbol) {
       const funcName = Object.keys(type) [0];
       generatedPassword += randomFunc[funcName]();
     })
+    
   }
 }
 
@@ -103,6 +101,8 @@ function writePassword() {
   const passwordText = document.querySelector("#password");
   passwordText.value = password;
 
+  //displays password on screen
+  console.log generatedPassword;
 }
 
 
