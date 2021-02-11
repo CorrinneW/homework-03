@@ -12,8 +12,7 @@ const lowercaseEl = document.querySelector("#lowercase");
 const numberEl = document.querySelector("#number");
 const symbolEl = document.querySelector("#symbol");
 
-//button functions
-
+//button functions: open & close popup
 generateBtn.onclick = function() {
   passwordSettings.style.display = "block";
 }
@@ -21,6 +20,9 @@ generateBtn.onclick = function() {
 okayBtn.onclick = function() {
   passwordSettings.style.display = "none";
 }
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 
 // // Write password to the #password input
@@ -31,6 +33,5 @@ okayBtn.onclick = function() {
 
 // }
 
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+
 
