@@ -4,7 +4,7 @@ const generateBtn = document.querySelector("#generate");
 //sets password length. rejects lengths that are outside parameters.
 function lengthEl() {
   const reply = parseInt(prompt("Number of characters desired (Min: 8, Max: 128)"));
-  if (reply > 8 && reply < 128) {
+  if (reply > 7 && reply < 129) {
     alert("Great, thanks!");
     return reply;
   } else {
@@ -45,9 +45,8 @@ function createSymbolArray() {
 
 //generate password based on answers to prompts
 function generatePassword() {  
-  const password = '';
+  let password = '';
   const pwLength = lengthEl();
-  console.log(pwLength);
 
   //prompts to select password options
   const lowercaseEl = confirm("Use lowercase letters?");
@@ -57,12 +56,11 @@ function generatePassword() {
 
   //array to be called when randomizing characters
   const pwArrays = [];
-
   console.log(pwArrays);
   
   if(lowercaseEl === true) {
     let lowercaseArray = createLowerArray();
-    pwArrays.lowercase = lowercaseArray;  
+    pwArrays.lowercase = lowercaseArray; 
   }
 
   if(uppercaseEl === true) {
@@ -81,12 +79,13 @@ function generatePassword() {
   }
 
   //generates a random character until pwLength is reached
-  for(i = 0; i <= pwLength; i++) {
-    password = 
-
+  for(i = 0; i < pwLength; i++) {
+    //selects a random charArray
+    //selects a random character within that array
   }
-  return password;
+
 }
+
 
 // Write password to the #password input
 function writePassword() {
