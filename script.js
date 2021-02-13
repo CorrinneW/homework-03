@@ -51,7 +51,9 @@ function generatePassword() {
     }
   }
 
-  console.log(charArray);
+  if(charArray.length === 0) {
+    alert("No character types selected!");
+  }
 
   //generates a random character until pwLength is reached
   const finalPassword = [];
