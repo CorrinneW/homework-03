@@ -18,7 +18,7 @@ Refactor existing code to return a randomly generated password based on user inp
 
 A simple, effective and customizable password generator.
 
-https://corrinnew.github.io/homework-02/
+https://corrinnew.github.io/homework-03/
 
 ![screenshot-1.PNG](https://github.com/CorrinneW/homework-03/blob/main/images/screenshot-1.PNG)
 
