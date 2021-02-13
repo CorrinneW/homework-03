@@ -1,52 +1,21 @@
 // Assignment Code
 const generateBtn = document.querySelector("#generate");
 
-//sets password length. rejects lengths that are outside parameters.
-function lengthEl() {
-  const reply = parseInt(prompt("Number of characters desired (Min: 8, Max: 128)"));
-  if (reply > 7 && reply < 129) {
-    alert("Great, thanks!");
-    return reply;
-  } else {
-    alert("Password must be between 8 and 128 characters")
-    lengthEl()  
-  }
-}
-
-//pulls characters into arrays for use in password
-function createLowerArray() {
-  const charArray = [];
-  for(i = 97; i <= 122; i++) {
-    charArray.push(String.fromCharCode(i));
-  }
-  return charArray;
-}
-
-function createUpperArray() {
-  const charArray = [];
-  for(i = 65; i <= 90; i++) {
-    charArray.push(String.fromCharCode(i));
-  }
-  return charArray;
-}
-
-function createNumberArray() {
-  const charArray = [];
-  for(i = 48; i <= 57; i++) {
-    charArray.push(String.fromCharCode(i));
-  }
-  return charArray;
-}
-
-function createSymbolArray() {
-  const symbols = "~`!@#$%^&*()_-+={[}]|\:;<,>".split("");
-  return symbols;
-} 
-
 //generate password based on answers to prompts
 function generatePassword() {  
-  let password = '';
   const pwLength = lengthEl();
+
+  //sets password length. rejects lengths that are outside parameters.
+  function lengthEl() {
+    const reply = parseInt(prompt("Number of characters desired (Min: 8, Max: 128)"));
+    if (reply > 7 && reply < 129) {
+      alert("Great, thanks!");
+      return reply;
+    } else {
+      alert("Password must be between 8 and 128 characters")
+      lengthEl()  
+    }
+  }
 
   //prompts to select password options
   const lowercaseEl = confirm("Use lowercase letters?");
@@ -54,36 +23,48 @@ function generatePassword() {
   const numberEl = confirm("Use numbers?");
   const symbolEl = confirm("Use symbols?");
 
-  //array to be called when randomizing characters
-  const pwArrays = [];
-  console.log(pwArrays);
+  //only accepted characters will be added to array
+  const charArray = [];
   
   if(lowercaseEl === true) {
-    let lowercaseArray = createLowerArray();
-    pwArrays.lowercase = lowercaseArray; 
+    for(i = 97; i <= 122; i++) {
+      charArray.push(String.fromCharCode(i));
+    }
   }
 
+
   if(uppercaseEl === true) {
-    let uppercaseArray = createUpperArray();
-    pwArrays.uppercase = uppercaseArray;  
+    for(i = 65; i <= 90; i++) {
+      charArray.push(String.fromCharCode(i));
+    } 
   }
   
   if(numberEl === true) {
-    let numberArray = createNumberArray();
-    pwArrays.number = numberArray;  
+    for(i = 48; i <= 57; i++) {
+      charArray.push(String.fromCharCode(i));
+    }
   }
 
   if(symbolEl === true) {
-    let symbolArray = createSymbolArray();
-    pwArrays.symbol = symbolArray;  
+    for(i = 33; i <= 47; i++) {
+      charArray.push(String.fromCharCode(i));
+    }
   }
+
+  console.log(charArray);
 
   //generates a random character until pwLength is reached
+  const finalPassword = [];
+  
+
   for(i = 0; i < pwLength; i++) {
-    //selects a random charArray
-    //selects a random character within that array
+    const randomChar = charArray[Math.floor(Math.random() *charArray.length)];
+    finalPassword.push(randomChar);
   }
 
+  const stringPassword = finalPassword.join("");
+  
+  return stringPassword;
 }
 
 
